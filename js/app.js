@@ -106,8 +106,7 @@ const shoppingCart = [
 
     let finalPrice =0;
     for (let i=0; i <shoppingCart.length; i++) {
-        finalPrice += shoppingCart [i].pricePerItem;
-    }
+        finalPrice += shoppingCart [i].count * shoppingCart [i].pricePerItem;}
     console.log (finalPrice);
 
 //task 3 //
