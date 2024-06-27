@@ -106,7 +106,7 @@ const shoppingCart = [
 
     let finalPrice =0;
     for (let i=0; i <shoppingCart.length; i++) {
-        finalPrice += shoppingCart [i].pricePerItem;
+        finalPrice += shoppingCart [i].count * shoppingCart [i].pricePerItem;
     }
     console.log (finalPrice);
 
@@ -153,3 +153,116 @@ const arr = [
     }
     console.log (result1);
     
+
+    // module 8
+
+
+    // task 1
+    // 1. Напишіть функцію, котра приймає строку як параметр і знаходить найдовше слово у строчці
+    function findLongestWord(str) {
+        return str.split(' ').reduce((a, b) => (b.length > a.length) ? b : a);
+      };
+
+// 2. Напишіть функцію, котра приймає число як параметр і повертає перевернуте число
+    function reverseNumber(number) {
+        let numberToString=String(number)
+        let reversedString=numberToString.split("").reverse().join("")
+        return Number(reversedString)
+   }   
+
+    // task 3
+    //3. Написати функцію котра буде приймати стрінь значення і повертати нове стрінь значення із символами без повторення
+   function unique(str) {
+    let result = "";
+    for (let i=0; i<str.length; i++) {
+      if (!result.includes(str[i]))
+        {
+          result += str[i];
+        }
+    }
+    return result
+  }
+
+    // task 4
+    const calcPoints = (wins, draws, losses) => {
+        const sumPoints = ((wins*3) + (draws*1) + (losses*0));
+        return sumPoints;
+    }
+
+    // task 5 
+    // 5. Написати функцію яка приймає масив як параметр і повертає об'єкт із такими властивостями: 
+//   Максимальне значення
+//   Мінімальне значення
+//   Кількість елементів
+//   Середнє арифметичне
+
+    function statistics(arr) {
+        let average = sum / count;
+        if (arr.length === 0) {
+          return {
+          max:null,
+          min:null,
+          count:0,
+          average:null
+          };
+        }
+        let result = arr.reduce ((acc,num)) => {
+          acc.max = Math.max (acc.max,num);
+          acc.min = Math.min (acc.min,num);
+          acc.sum += num
+          acc.count++;
+          return acc;
+        } {
+          max: -Infinity,
+          min: Infinity,
+          sum: 0,
+          count: 0
+        };
+        result.average = result.sum /result.count;
+        return result;
+      }
+
+    // task 6
+    const workers = [
+        { name: "Jimm", salary: 40000, department: "IT" },
+        { name: "Bob", salary: 60300, department: "HR" },
+        { name: "Stacy", salary: 15000, department: "IT" },
+        { name: "Tom", salary: 55200, department: "DEVOPS" },
+        { name: "Kate", salary: 25000, department: "IT" },
+        { name: "John", salary: 40000, department: "HR" },
+        { name: "Billy", salary: 60000, department: "DEVOPS" },
+      ];
+      
+       function highestDepartment(workers) {
+            const groupedByDepartment = workers.reduce(function(obj, curr) {
+              const { department, salary } = curr;
+        
+              if(!obj[department]) {
+                obj[department] = {
+                  department: department,
+                  count: 1,
+                  totalSalary: salary
+                  }
+              }    
+              obj[department].count += 1
+              obj[department].totalSalary += salary
+              
+              return obj
+            }, {});
+            
+            const averageDepartments = Object.values(groupedByDepartment).map(function(el) {
+                return {
+                  department: el.department,
+                  average: el.totalSalary / el.count
+                }
+            })
+            
+            averageDepartments.sort(function(a,b) {
+              return b.average - a.average
+            })
+            
+           return averageDepartments[0]
+         
+        }
+        
+        highestDepartment(workers)
