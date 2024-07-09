@@ -70,11 +70,11 @@ if (typeof a ==='number' && typeof b === 'number') {
 // module 7//
 
 //task 1 //
-const arr = [90, 124, 55, 9213, 159, 225, 1543, 1545];
+const arr1 = [90, 124, 55, 9213, 159, 225, 1543, 1545];
 const devideArr = [];
-for ( let i = 0; i <= arr.length; i++) {
-    if ( arr [i] % 3 === 0) {
-       devideArr.push (arr [i]);
+for ( let i = 0; i <= arr1.length; i++) {
+    if ( arr1 [i] % 3 === 0) {
+       devideArr.push (arr1 [i]);
     }
 }
 console.log (devideArr);
@@ -112,7 +112,7 @@ const shoppingCart = [
 
 //task 3 //
 
-const arr = [
+const arr2 = [
     [100, 1230, 1293123, 1236478, 9816],
     [9932, 2123123, 1293123, 1203123, 1239],
     [12391, 1235, 1123994, 1203123, 5543243],
@@ -131,7 +131,7 @@ const arr = [
     console.log (sum);
 
     //task 4 //
-    const arr = ["php", "php", "css", "css","script", "script", "html", "html", "java", "java", "go", "Python", "Python"];
+    const arr3 = ["php", "php", "css", "css","script", "script", "html", "html", "java", "java", "go", "Python", "Python"];
     const uniqueArray = []
     for ( let i = 0; i < arr.length; i++) {
         if (! uniqueArray.includes (arr [i])) {
@@ -206,16 +206,16 @@ const arr = [
           average:null
           };
         }
-        let result = arr.reduce ((acc,num)) => {
-          acc.max = Math.max (acc.max,num);
-          acc.min = Math.min (acc.min,num);
+        let result = arr.reduce((acc,num)) ; {
+          acc.max = Math.max(acc.max,num);
+          acc.min = Math.min(acc.min,num);
           acc.sum += num
           acc.count++;
           return acc;
         } {
-          max: -Infinity,
-          min: Infinity,
-          sum: 0,
+          max: -Infinity;
+          min: Infinity;
+          sum: 0;
           count: 0
         };
         result.average = result.sum /result.count;
@@ -311,11 +311,10 @@ const object = {
   items: [],
   setItems(array) {
     this.items = Array.isArray(array) ? array.slice() : [];
-  }
-
+  },
   sum() {
     return this.items.reduce((acc,current) => acc + current, 0)
-  }
+  },
 maxValue() {
   return Math.max(...this.items);
 }
