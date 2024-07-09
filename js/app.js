@@ -153,3 +153,210 @@ const arr = [
     }
     console.log (result1);
     
+
+    // module 8
+
+
+    // task 1
+    // 1. Напишіть функцію, котра приймає строку як параметр і знаходить найдовше слово у строчці
+    function findLongestWord(str) {
+        return str.split(' ').reduce((a, b) => (b.length > a.length) ? b : a);
+      };
+
+// 2. Напишіть функцію, котра приймає число як параметр і повертає перевернуте число
+    function reverseNumber(number) {
+        let numberToString=String(number)
+        let reversedString=numberToString.split("").reverse().join("")
+        return Number(reversedString)
+   }   
+
+    // task 3
+    //3. Написати функцію котра буде приймати стрінь значення і повертати нове стрінь значення із символами без повторення
+   function unique(str) {
+    let result = "";
+    for (let i=0; i<str.length; i++) {
+      if (!result.includes(str[i]))
+        {
+          result += str[i];
+        }
+    }
+    return result
+  }
+
+    // task 4
+    const calcPoints = (wins, draws, losses) => {
+        const sumPoints = ((wins*3) + (draws*1) + (losses*0));
+        return sumPoints;
+    }
+
+    // task 5 
+    // 5. Написати функцію яка приймає масив як параметр і повертає об'єкт із такими властивостями: 
+//   Максимальне значення
+//   Мінімальне значення
+//   Кількість елементів
+//   Середнє арифметичне
+
+    function statistics(arr) {
+        let average = sum / count;
+        if (arr.length === 0) {
+          return {
+          max:null,
+          min:null,
+          count:0,
+          average:null
+          };
+        }
+        let result = arr.reduce ((acc,num)) => {
+          acc.max = Math.max (acc.max,num);
+          acc.min = Math.min (acc.min,num);
+          acc.sum += num
+          acc.count++;
+          return acc;
+        } {
+          max: -Infinity,
+          min: Infinity,
+          sum: 0,
+          count: 0
+        };
+        result.average = result.sum /result.count;
+        return result;
+      }
+
+    // task 6
+    const workers = [
+        { name: "Jimm", salary: 40000, department: "IT" },
+        { name: "Bob", salary: 60300, department: "HR" },
+        { name: "Stacy", salary: 15000, department: "IT" },
+        { name: "Tom", salary: 55200, department: "DEVOPS" },
+        { name: "Kate", salary: 25000, department: "IT" },
+        { name: "John", salary: 40000, department: "HR" },
+        { name: "Billy", salary: 60000, department: "DEVOPS" },
+      ];
+      
+       function highestDepartment(workers) {
+            const groupedByDepartment = workers.reduce(function(obj, curr) {
+              const { department, salary } = curr;
+        
+              if(!obj[department]) {
+                obj[department] = {
+                  department: department,
+                  count: 1,
+                  totalSalary: salary
+                  }
+              }    
+              obj[department].count += 1
+              obj[department].totalSalary += salary
+              
+              return obj
+            }, {});
+            
+            const averageDepartments = Object.values(groupedByDepartment).map(function(el) {
+                return {
+                  department: el.department,
+                  average: el.totalSalary / el.count
+                }
+            })
+            
+            averageDepartments.sort(function(a,b) {
+              return b.average - a.average
+            })
+            
+           return averageDepartments[0]
+         
+        }
+        
+        highestDepartment(workers)
+
+        //module 9
+
+        //task 1
+        // Вивести одним рядком мінімальне значення масиву за допомогою деструктуризації та Math
+const array = [1, 2, 3, 4, 6, 710, 34013, 13];
+const min = Math.min(...array)
+console.log(min)
+
+//task 2
+// 2. Функція multiply не приймає явно ніяких параметрів
+function multiply(... numbers) {
+  console.log(numbers);
+  const multi = numbers.reduce((acc,curr) => {
+    return acc*curr;
+  });
+  return multi;
+}
+
+//multiply(100, 200, 83902, 1230);
+// В результаті має повернутися число, котре є результатом множення усіх аргументів переданих у функцію
+
+//task 3
+//3. У нас є функція totalPrice - за допомогою деструктуризації об'єкту зробити так, що б функція працювала
+const product = {
+  productName: "Water",
+  price: 20,
+  count: 3,
+};
+
+function totalPrice({price, count}) {
+  return price * count;
+}
+console.log(totalPrice(product))
+
+//task 4
+// 4. Написати об'єкт у котрому буде властивість items ( спочатку пустий масив)
+// метод об'єкту setItems котрий приймає масив значень і встановлює цей масив як значення властивості items
+// метод об'єкту sum котрий повертає суму усіх елементів масиву items
+// метод maxValue еотрий поверає максимальне значення з масиву items з використанням деструктуризації масиву
+
+const object = {
+  items: [],
+  setItems(array) {
+    this.items = Array.isArray(array) ? array.slice() : [];
+  }
+
+  sum() {
+    return this.items.reduce((acc,current) => acc + current, 0)
+  }
+maxValue() {
+  return Math.max(...this.items);
+}
+  }
+  
+
+  // task 5
+  // 5. Написати функционал так, що б при виклику showPrediction виводилась випадковий вираз з масиву predictArr
+// кожні 3 секунди
+// Додати метод для зупинки роботи виводу виразів
+
+const predictsArr = [
+  "Удача прийде звідки не чекаєте.",
+  "Давні борги будуть повернуті вам.",
+  "Вас чекає несподіване грошове надходження.",
+  "Всі незакінчені справи будуть завершені.",
+  "Яскрава пригода вже чекає на вас.",
+  "Планування часу допоможе вам не запізнитися на зустріч.",
+  "Інтуїція цього разу не підведе вас. Використовуйте це.",
+  "Прислухайтеся до себе і відповідь на запитання буде знайдено.",
+  "З'явиться можливість вирушити в дорогу.",
+  "Ваш цінний досвід зможе комусь допомогти, якщо перестанете його ховати в собі.",
+  "Вам не вдасться сподобатися всім, не витрачайте на це енергію.",
+  "Одяг, який вас старить, не дістанеться вам.",
+];
+
+const obj = {
+  predictions: [],
+  setPredictions(arr) {this.predictions = arr;},
+  showPrediction () {
+    this.intervalId = setInterval(() => {
+      const predNumber = Math.floor(Math.random()*this.predictions.length);
+      console.log(this.predictions[predNumber]);
+    }, 3000)
+  },
+
+  stopPredict () {
+    clearInterval(this.intervalId);
+  }
+};
+const predictions = obj;
+predictions.setPredictions(predictsArr);
+
+
