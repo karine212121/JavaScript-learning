@@ -152,3 +152,55 @@ const arr = [
     }
     console.log (result1);
     
+     //module 9
+
+        //task 1
+        // Вивести одним рядком мінімальне значення масиву за допомогою деструктуризації та Math
+const array = [1, 2, 3, 4, 6, 710, 34013, 13];
+const min = Math.min(...array)
+console.log(min)
+
+//task 2
+// 2. Функція multiply не приймає явно ніяких параметрів
+function multiply(... numbers) {
+  console.log(numbers);
+  const multi = numbers.reduce((acc,curr) => {
+    return acc*curr;
+  });
+  return multi;
+}
+
+//multiply(100, 200, 83902, 1230);
+// В результаті має повернутися число, котре є результатом множення усіх аргументів переданих у функцію
+
+//task 3
+//3. У нас є функція totalPrice - за допомогою деструктуризації об'єкту зробити так, що б функція працювала
+const product = {
+  productName: "Water",
+  price: 20,
+  count: 3,
+};
+
+function totalPrice({price, count}) {
+  return price * count;
+}
+console.log(totalPrice(product))
+
+//task 4
+// 4. Написати об'єкт у котрому буде властивість items ( спочатку пустий масив)
+// метод об'єкту setItems котрий приймає масив значень і встановлює цей масив як значення властивості items
+// метод об'єкту sum котрий повертає суму усіх елементів масиву items
+// метод maxValue еотрий поверає максимальне значення з масиву items з використанням деструктуризації масиву
+
+const object = {
+  items: [],
+  setItems(array) {
+    this.items = Array.isArray(array) ? array.slice() : [];
+  },
+  sum() {
+    return this.items.reduce((acc,current) => acc + current, 0)
+  },
+maxValue() {
+  return Math.max(...this.items);
+}
+  }
